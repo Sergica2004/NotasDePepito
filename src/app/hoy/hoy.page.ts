@@ -3,16 +3,6 @@ import { IonicModule, ModalController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { AddNoteModalComponent } from '../add-note-modal/add-note-modal.component';
 
-interface Nota {
-  titulo: string;
-  contenido: string;
-  categoria: string;
-  fecha?: string;
-  indicador?: boolean;
-  terminada?: boolean;
-  hoyCount: boolean;
-  programado?: boolean;
-}
 
 @Component({
   selector: 'app-hoy',
@@ -37,27 +27,24 @@ export class HoyPage implements OnInit {
     this.cargarNotasHoy();
   }
 
-  agregarNota(nuevaNota: Nota) {
-    this.notas.push(nuevaNota);
-    localStorage.setItem('notas', JSON.stringify(this.notas));
-    this.totalNotas = this.notas.length;
-  }
-
-  async openModal() {
-    const modal = await this.modalCtrl.create({
-      component: AddNoteModalComponent,
-    });
-
-    modal.onDidDismiss().then(() => {
-      this.cargarNotasHoy();
-    });
-
-    await modal.present();
-  }
-
   cargarNotasHoy() {
     const notas = JSON.parse(localStorage.getItem('notas') || '[]');
     const hoy = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
     this.notasHoy = notas.filter((nota: { fecha: string; }) => nota.fecha === hoy);
   }
+
+  async abrirModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddNoteModalComponent,
+    });
+  
+    await modal.present();
+  
+    const { data, role } = await modal.onDidDismiss();
+  
+    if (role === 'confirmado' || data) {
+      this.cargarNotasHoy(); // 🔄 Recargar las notas después de cerrar el modal
+    }
+  }
+  
 }
