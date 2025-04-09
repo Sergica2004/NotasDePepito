@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelar()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo recordatorio</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardar()" [disabled]="!titulo">Agregar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input placeholder="Título" [(ngModel)]="titulo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea placeholder="Notas" [(ngModel)]="contenido"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-datetime [(ngModel)]="fecha"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Lista</ion-label>
+    <ion-select [(ngModel)]="categoria">
+      <ion-select-option value="Recordatorios">Recordatorios</ion-select-option>
+      <ion-select-option value="Trabajos">Trabajos</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,46 @@
+.encabezado {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  
+    ion-icon {
+      margin-right: 6px;
+      font-size: 20px;
+    }
+  }
+  
+  .titulo {
+    font-size: 32px;
+    color: #0057ff;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+  }
+  
+  .listas-hoy {
+    ion-item {
+      border-bottom: 1px solid #ccc;
+      --background: transparent;
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      font-size: 16px;
+    }
+  }
+  
+  .boton-agregar {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  
+    ion-button {
+      font-size: 14px;
+      color: #0057ff;
+      ion-icon {
+        margin-right: 4px;
+        font-size: 20px;
+      }
+    }
+  }
+  

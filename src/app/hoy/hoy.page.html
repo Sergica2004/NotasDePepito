@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hoy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-icon name="return-down-forward-outline"></ion-icon>
+        Listas
+      </ion-card-subtitle>
+      <ion-card-title color="primary">Hoy</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="full" *ngFor="let nota of notasHoy">
+          <ion-label>
+            <h2>{{ nota.titulo }}</h2>
+            <p>{{ nota.descripcion }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="bottom-buttons">
+    <ion-button fill="clear" color="primary" size="small" (click)="openModal()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      Agregar Recordatorio
+    </ion-button>
+  </div>
+</ion-content>

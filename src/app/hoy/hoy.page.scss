@@ -1,0 +1,23 @@
+ion-content {
+    --background: #000000;
+  }
+  
+  ion-card {
+    margin: 16px;
+  }
+  
+  ion-card-title {
+    font-size: 2rem;
+    color: #0044ff;
+  }
+  
+  .bottom-buttons {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    ion-button {
+      font-size: 14px;
+      color: #0044ff;
+    }
+  }
+  
