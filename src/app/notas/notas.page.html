@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Programados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="color: rgb(0, 235, 27); font-size: 24px;">Notas</ion-card-title>
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item *ngFor="let nota of notas">
+        <ion-label>
+          <h2>{{ nota.titulo }}</h2>
+          <p>{{ nota.contenido }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+

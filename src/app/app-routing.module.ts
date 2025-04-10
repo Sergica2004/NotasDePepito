@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'programados',
     loadChildren: () => import('./programados/programados.module').then( m => m.ProgramadosPageModule)
   },
+  {
+    path: 'notas',
+    loadChildren: () => import('./notas/notas.module').then( m => m.NotasPageModule)
+  },
 ];
 @NgModule({
   imports: [
