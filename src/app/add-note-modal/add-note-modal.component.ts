@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './add-note-modal.component.html',
   imports: [IonicModule, CommonModule, FormsModule],
   styleUrls: ['./add-note-modal.component.scss'],
-
+  standalone: true,
 })
 export class AddNoteModalComponent {
-  
+
   titulo: string = '';
   contenido: string = '';
-  fecha: string = new Date().toISOString().slice(0, 10); // "2025-04-08"
+  fecha: string = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
   categoria: string = 'Recordatorios';
 
   constructor(private modalCtrl: ModalController) {}
@@ -24,6 +24,12 @@ export class AddNoteModalComponent {
     const hoy = new Date();
     const fechaNota = new Date(this.fecha);
     const esHoy = hoy.toDateString() === fechaNota.toDateString();
+
+    // Validación básica (opcional pero elegante)
+    if (!this.titulo.trim() || !this.contenido.trim()) {
+      alert('¡Completa el título y el contenido antes de guardar!');
+      return;
+    }
 
     const nuevaNota = {
       id: Date.now(),
@@ -35,10 +41,17 @@ export class AddNoteModalComponent {
       programado: !esHoy,
     };
 
-    this.modalCtrl.dismiss(nuevaNota);
+    // Guardar en LocalStorage
+    const notasGuardadas = JSON.parse(localStorage.getItem('notas') || '[]');
+    notasGuardadas.push(nuevaNota);
+    localStorage.setItem('notas', JSON.stringify(notasGuardadas));
+
+    // Cerrar el modal y retornar la nota
+    this.modalCtrl.dismiss({ nota: nuevaNota }, 'confirmado');
   }
 
   cancelar() {
     this.modalCtrl.dismiss();
   }
+
 }

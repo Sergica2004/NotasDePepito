@@ -31,6 +31,7 @@ export class HoyPage implements OnInit {
     const notas = JSON.parse(localStorage.getItem('notas') || '[]');
     const hoy = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
     this.notasHoy = notas.filter((nota: { fecha: string; }) => nota.fecha === hoy);
+    
   }
 
   async abrirModal() {

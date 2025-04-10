@@ -17,6 +17,10 @@ const routes: Routes = [
    path: 'hoy',
    loadChildren: () => import('./hoy/hoy.module').then( m => m.HoyPageModule)
   },
+  {
+    path: 'programados',
+    loadChildren: () => import('./programados/programados.module').then( m => m.ProgramadosPageModule)
+  },
 ];
 @NgModule({
   imports: [
