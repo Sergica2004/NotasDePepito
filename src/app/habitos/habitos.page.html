@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hábitos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="color: rgb(213, 228, 0); font-size: 24px;">Hábitos</ion-card-title>
+    </ion-card-header>
+
+    <ion-list *ngIf="habitos.length > 0; else sinHabitos">
+      <ion-item *ngFor="let nota of habitos">
+        <ion-label>
+          <h2>{{ nota.titulo }}</h2>
+          <p>{{ nota.contenido }}</p>
+          <p><strong>Fecha:</strong> {{ nota.fecha }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #sinHabitos>
+      <ion-item>
+        <ion-label>No hay hábitos guardados.</ion-label>
+      </ion-item>
+    </ng-template>
+  </ion-card>
+</ion-content>

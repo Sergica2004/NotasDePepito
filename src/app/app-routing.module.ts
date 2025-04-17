@@ -25,6 +25,14 @@ const routes: Routes = [
     path: 'notas',
     loadChildren: () => import('./notas/notas.module').then( m => m.NotasPageModule)
   },
+  {
+    path: 'habitos',
+    loadChildren: () => import('./habitos/habitos.module').then( m => m.HabitosPageModule)
+  },
+  {
+    path: 'recordatorios',
+    loadChildren: () => import('./recordatorios/recordatorios.module').then( m => m.RecordatoriosPageModule)
+  },
 ];
 @NgModule({
   imports: [

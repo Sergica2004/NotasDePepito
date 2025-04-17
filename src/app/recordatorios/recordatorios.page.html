@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Recordatorios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title style="color: #00d9ff; font-size: 24px;">Recordatorios</ion-card-title>
+      </ion-card-header>
+  
+      <ion-list *ngIf="recordatorios.length > 0; else sinRecordatorios">
+        <ion-item *ngFor="let nota of recordatorios">
+          <ion-label>
+            <h2>{{ nota.titulo }}</h2>
+            <p>{{ nota.contenido }}</p>
+            <p><strong>Fecha:</strong> {{ nota.fecha }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  
+      <ng-template #sinRecordatorios>
+        <ion-item>
+          <ion-label>No hay recordatorios aún.</ion-label>
+        </ion-item>
+      </ng-template>
+    </ion-card>
+  </ion-content>
+  
