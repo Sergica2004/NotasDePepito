@@ -9,7 +9,7 @@ interface Nota {
   fecha?: string;
   indicador?: boolean;
   terminada?: boolean;
-  hoyCount: boolean;
+  hoy: boolean;
   programado?: boolean;
 }
 
@@ -35,6 +35,7 @@ export class HomePage {
     const notasGuardadas = localStorage.getItem('notas');
     this.notas = notasGuardadas ? JSON.parse(notasGuardadas) : [];
     this.totalNotas = this.notas.length;
+    this.recontarNotas();
   }
 
   agregarNota(nuevaNota: Nota) {
@@ -66,9 +67,16 @@ export class HomePage {
   }
 
   recontarNotas() {
+    const fechaHoy = new Date().toISOString().split('T')[0];
+    
     this.totalNotas = this.notas.length;
+    this.notas.forEach(nota => {
+      if (nota.fecha) {
+        nota.hoy = nota.fecha.includes(fechaHoy);
+      }
+    });
+    localStorage.setItem('notas', JSON.stringify(this.notas));
     this.hoyCount = this.notas.filter(n => n.hoy).length;
     this.programadosCount = this.notas.filter(n => n.programado).length;
-    // Otros contadores si hace falta
   }
 }
