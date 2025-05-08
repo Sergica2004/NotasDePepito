@@ -1,7 +1,13 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { AngularDelegate, IonicModule, ModalController } from '@ionic/angular';
 
 import { AddNoteModalComponent } from './add-note-modal.component';
+
+// Mock del ModalController
+class MockModalController {
+  dismiss(data?: any, role?: string) {}
+}
+
 
 describe('AddNoteModalComponent', () => {
   let component: AddNoteModalComponent;
@@ -9,8 +15,8 @@ describe('AddNoteModalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddNoteModalComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot() , AddNoteModalComponent],
+      providers: [AngularDelegate, ModalController],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddNoteModalComponent);
